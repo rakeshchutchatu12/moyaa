@@ -25,6 +25,7 @@ import videosRouter from './routes/videos.js';
 import bannersRouter from './routes/banners.js';
 import couponsRouter from './routes/coupons.js';
 import authRouter from './routes/auth.js';
+import chatRouter from './routes/chat.js';
 import User from './models/User.js';
 import bcrypt from 'bcryptjs';
 
@@ -33,6 +34,7 @@ app.use('/api/videos', videosRouter);
 app.use('/api/banners', bannersRouter);
 app.use('/api/coupons', couponsRouter);
 app.use('/api/auth', authRouter);
+app.use('/api/chat', chatRouter);
 
 // Serve uploaded files
 app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
