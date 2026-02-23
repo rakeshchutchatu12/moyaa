@@ -1,7 +1,22 @@
 {
   "buildCommand": "npm install && npm run build",
   "outputDirectory": "dist",
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
   "env": {
-    "VITE_API_BASE": "@vite_api_base"
-  }
+    "VITE_API_BASE": "@vite_api_base",
+    "MONGO_URI": "@mongo_uri",
+    "JWT_SECRET": "@jwt_secret",
+    "ADMIN_EMAIL": "@admin_email",
+    "ADMIN_PASSWORD": "@admin_password"
+  },
+  "envFile": ".env.production"
 }
