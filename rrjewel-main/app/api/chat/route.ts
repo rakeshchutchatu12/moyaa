@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
 export async function GET(request: NextRequest) {
   try {
     const authenticatedUserId = request.headers.get('x-user-id');
-    const searchParams = request.nextUrl.searchParams;
+    const { searchParams } = new URL(request.url);
     const userId = searchParams.get('userId');
 
     // Authorization check: Users can only access their own chat history
