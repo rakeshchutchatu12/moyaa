@@ -59,17 +59,17 @@ const Reviews = () => {
   return (
     <>
       {/* Features Section */}
-      <section className="py-16 bg-dark-chocolate border-y border-gold-primary/20">
+      <section className="py-16 bg-luxury-secondary border-y border-gold-primary/20 shadow-[inset_0_1px_0_rgba(255,215,0,0.1)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
             {features.map((feature, index) => (
               <div key={index} className="flex flex-col items-center text-center space-y-4">
                 <div className="text-4xl">{feature.icon}</div>
                 <div>
-                  <h3 className="luxury-serif text-text-on-dark text-sm tracking-widest mb-2">
+                  <h3 className="luxury-serif text-gold-primary text-sm tracking-widest mb-2">
                     {feature.title}
                   </h3>
-                  <p className="text-text-on-dark/80 text-xs leading-relaxed">
+                  <p className="text-platinum/60 text-xs leading-relaxed">
                     {feature.description}
                   </p>
                 </div>
@@ -80,21 +80,21 @@ const Reviews = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-24 bg-deep-teal border-b border-gold-primary/10">
+      <section className="py-24 bg-luxury-dark border-b border-gold-primary/20 shadow-[inset_0_1px_0_rgba(255,215,0,0.1)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section header */}
           <div className="text-center mb-20">
             <div className="inline-block mb-6">
-              <div className="text-gold-primary text-sm tracking-widest font-light">
-                CLIENT TESTIMONIALS
+              <div className="text-gold-primary text-sm tracking-widest font-light luxury-serif">
+                ✨ CLIENT TESTIMONIALS ✨
               </div>
             </div>
-            <h2 className="luxury-serif text-5xl md:text-6xl text-text-on-dark mb-6">
+            <h2 className="luxury-serif text-5xl md:text-6xl text-platinum mb-6">
               Trusted by
               <br />
-              <span className="text-gold-primary">Connoisseurs</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-primary to-rose-gold">Connoisseurs</span>
             </h2>
-            <p className="text-text-on-dark/80 max-w-2xl mx-auto text-lg">
+            <p className="text-platinum/70 max-w-2xl mx-auto text-lg">
               Discover what our valued clients say about their experience with MYRA
             </p>
           </div>
@@ -105,7 +105,7 @@ const Reviews = () => {
               {reviews.map((review, index) => (
                 <div
                   key={review.id}
-                  className={`glass-card p-8 rounded-2xl backdrop-blur-xl border border-gold-primary/20 transition-all duration-300 ${
+                  className={`glass-card-sapphire p-8 rounded-2xl backdrop-blur-xl border border-sapphire-luxury/40 transition-all duration-300 shadow-glow-sapphire ${
                     index === currentReviewIndex ? 'lg:col-span-2 lg:row-span-1 shadow-glow' : 'opacity-50 lg:opacity-100'
                   }`}
                 >
@@ -120,13 +120,13 @@ const Reviews = () => {
                   </div>
 
                   {/* Review text */}
-                  <p className="text-text-on-dark text-lg leading-relaxed mb-6 italic">
+                  <p className="text-platinum text-lg leading-relaxed mb-6 italic">
                     "{review.text}"
                   </p>
 
                   {/* Author */}
                   <div className="border-t border-gold-primary/20 pt-4">
-                    <p className="text-gold-soft luxury-serif text-sm tracking-wider">
+                    <p className="text-rose-gold luxury-serif text-sm tracking-wider">
                       — {review.author}
                     </p>
                   </div>
@@ -141,7 +141,7 @@ const Reviews = () => {
                 className="p-3 rounded-full border border-gold-primary/30 hover:border-gold-primary/60 hover:shadow-glow transition-all duration-300"
                 aria-label="Previous review"
               >
-                <ChevronLeft className="h-5 w-5 text-gold-primary" />
+                <ChevronLeft className="h-5 w-5 text-gold-primary hover:text-gold-highlight transition-colors" />
               </button>
 
               <div className="flex gap-2">
@@ -151,8 +151,8 @@ const Reviews = () => {
                     onClick={() => setCurrentReviewIndex(index)}
                     className={`h-2 rounded-full transition-all duration-300 ${
                       index === currentReviewIndex
-                        ? 'w-8 bg-gold-primary'
-                        : 'w-2 bg-gold-primary/30 hover:bg-gold-primary/60'
+                        ? 'w-8 bg-gold-primary shadow-glow'
+                        : 'w-2 bg-ruby-luxury/40 hover:bg-ruby-luxury/70'
                     }`}
                     aria-label={`Go to review ${index + 1}`}
                   />
@@ -164,7 +164,7 @@ const Reviews = () => {
                 className="p-3 rounded-full border border-gold-primary/30 hover:border-gold-primary/60 hover:shadow-glow transition-all duration-300"
                 aria-label="Next review"
               >
-                <ChevronRight className="h-5 w-5 text-gold-primary" />
+                <ChevronRight className="h-5 w-5 text-gold-primary hover:text-gold-highlight transition-colors" />
               </button>
             </div>
           </div>

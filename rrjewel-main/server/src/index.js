@@ -16,7 +16,7 @@ app.use(express.json());
 
 // Basic CSP header to mirror the meta tag in index.html. Adjust for production tighter rules.
 app.use((req, res, next) => {
-  res.setHeader('Content-Security-Policy', "default-src 'self' data: blob: https:; connect-src 'self' http://localhost:5000 ws://localhost:5173 ws://localhost:5000 https:; img-src 'self' data: blob: https:; media-src 'self' https:; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' data: https:; frame-src https:");
+  res.setHeader('Content-Security-Policy', "default-src 'self' data: blob: https:; connect-src 'self' http://localhost:5000 ws://localhost:5173 ws://localhost:5000 https:; img-src 'self' data: blob: https:; media-src 'self' https:; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' data: https:; frame-src https:; worker-src 'self' blob:;");
   next();
 });
 
@@ -38,6 +38,10 @@ app.use('/api/chat', chatRouter);
 
 // Serve uploaded files
 app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
+
+app.get('/', (req, res) => {
+  res.json({ message: 'RRJEWEL API Server', status: 'running', version: '1.0.0' });
+});
 
 app.get('/api/health', (req, res) => res.json({ ok: true }));
 

@@ -237,17 +237,16 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   // Hydrate from localStorage on mount
   useEffect(() => {
     let mounted = true;
-    const API = (import.meta.env && (import.meta.env.VITE_API_BASE || '')) || '';
     const hydrate = async () => {
       // try backend first
       try {
-        const health = await fetch(`${API}/api/health`);
+        const health = await fetch(`/api/health`);
         if (health.ok) {
           const [prodRes, vidRes, banRes, coupRes] = await Promise.all([
-            fetch(`${API}/api/products`),
-            fetch(`${API}/api/videos`),
-            fetch(`${API}/api/banners`),
-            fetch(`${API}/api/coupons`),
+            fetch(`/api/products`),
+            fetch(`/api/videos`),
+            fetch(`/api/banners`),
+            fetch(`/api/coupons`),
           ]);
           if (prodRes.ok) {
             const prods = await prodRes.json();

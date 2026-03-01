@@ -1,39 +1,49 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { connectDB } from '@/lib/mongodb';
+import Chat from '@/models/Chat';
+import User from '@/models/User';
 
 export async function POST(request: NextRequest) {
   try {
+    await connectDB();
     const body = await request.json();
     const { userId, message } = body;
 
-    // Get the authenticated user from the request
-    // Note: You'll need to implement proper authentication (JWT, session, etc.)
-    const authenticatedUserId = request.headers.get('x-user-id');
-
-    // Authorization check: Verify that the userId matches the authenticated user
-    // This prevents user impersonation attacks
-    if (userId !== authenticatedUserId) {
+    // Validate input
+    if (!userId || !message || message.trim() === '') {
       return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      );
-    }
-
-    if (!message || typeof message !== 'string' || message.trim() === '') {
-      return NextResponse.json(
-        { error: 'Message is required' },
+        { error: 'User ID and message are required' },
         { status: 400 }
       );
     }
 
-    // Process the chat message here
-    // TODO: Save to database, call AI service, etc.
+    // Verify user exists
+    const user = await User.findById(userId);
+    if (!user) {
+      return NextResponse.json(
+        { error: 'User not found' },
+        { status: 404 }
+      );
+    }
 
-    return NextResponse.json({
-      success: true,
-      message: 'Chat message processed',
+    // Create and save chat message
+    const chat = new Chat({
       userId,
-      timestamp: new Date().toISOString()
+      userName: user.name,
+      userEmail: user.email,
+      message: message.trim(),
+      type: 'user',
     });
+
+    await chat.save();
+
+    return NextResponse.json(
+      {
+        success: true,
+        chat,
+      },
+      { status: 201 }
+    );
   } catch (error) {
     console.error('Chat API error:', error);
     return NextResponse.json(
@@ -45,25 +55,25 @@ export async function POST(request: NextRequest) {
 
 export async function GET(request: NextRequest) {
   try {
-    const authenticatedUserId = request.headers.get('x-user-id');
+    await connectDB();
     const { searchParams } = new URL(request.url);
     const userId = searchParams.get('userId');
 
-    // Authorization check: Users can only access their own chat history
-    if (userId !== authenticatedUserId) {
+    if (!userId) {
       return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
+        { error: 'User ID is required' },
+        { status: 400 }
       );
     }
 
-    // Retrieve chat messages for the authenticated user
-    // TODO: Fetch from database
+    // Retrieve chat messages for the user
+    const messages = await Chat.find({ userId })
+      .sort({ createdAt: -1 })
+      .populate('userId', 'email name');
 
     return NextResponse.json({
       success: true,
-      userId: authenticatedUserId,
-      messages: []
+      messages,
     });
   } catch (error) {
     console.error('Chat API error:', error);

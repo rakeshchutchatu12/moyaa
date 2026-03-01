@@ -112,23 +112,23 @@ const AllProducts = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="min-h-screen bg-luxury-dark">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="flex gap-8">
-          {/* Sidebar Filters */}
+          {/* Sidebar Filters with luxury styling */}
           <div className="w-1/4 space-y-6">
             <div>
-              <h3 className="text-lg font-medium text-gray-900 mb-4">FILTER:</h3>
+              <h3 className="text-lg font-medium text-gold-primary mb-4 luxury-serif tracking-widest">FILTER:</h3>
             </div>
 
             {/* Collection Filter */}
-            <div className="border-b border-gray-200 pb-6">
+            <div className="border-b border-gold-primary/30 pb-6">
               <button
                 onClick={() => setIsCollectionOpen(!isCollectionOpen)}
                 className="flex items-center justify-between w-full text-left"
               >
-                <h4 className="text-sm font-medium text-gray-900">COLLECTION</h4>
-                <ChevronDown className={`h-4 w-4 transform transition-transform ${isCollectionOpen ? 'rotate-180' : ''}`} />
+                <h4 className="text-sm font-medium text-platinum luxury-serif">COLLECTION</h4>
+                <ChevronDown className={`h-4 w-4 text-gold-primary transform transition-transform ${isCollectionOpen ? 'rotate-180' : ''}`} />
               </button>
               
               {isCollectionOpen && (
@@ -141,11 +141,11 @@ const AllProducts = () => {
                           name="collection"
                           className="sr-only"
                         />
-                        <span className="text-sm text-gray-600 hover:text-brand cursor-pointer">
+                        <span className="text-sm text-platinum/70 hover:text-gold-primary cursor-pointer transition-colors duration-300">
                           {collection.name}
                         </span>
                       </label>
-                      <span className="text-sm text-gray-400">({collection.count})</span>
+                      <span className="text-sm text-platinum/50">({collection.count})</span>
                     </div>
                   ))}
                 </div>
@@ -153,24 +153,24 @@ const AllProducts = () => {
             </div>
 
             {/* Availability Filter */}
-            <div className="border-b border-gray-200 pb-6">
+            <div className="border-b border-gold-primary/30 pb-6">
               <button
                 onClick={() => setIsAvailabilityOpen(!isAvailabilityOpen)}
                 className="flex items-center justify-between w-full text-left"
               >
-                <h4 className="text-sm font-medium text-gray-900">AVAILABILITY</h4>
-                <ChevronDown className={`h-4 w-4 transform transition-transform ${isAvailabilityOpen ? 'rotate-180' : ''}`} />
+                <h4 className="text-sm font-medium text-platinum luxury-serif">AVAILABILITY</h4>
+                <ChevronDown className={`h-4 w-4 text-gold-primary transform transition-transform ${isAvailabilityOpen ? 'rotate-180' : ''}`} />
               </button>
               
               {isAvailabilityOpen && (
                 <div className="mt-4 space-y-3">
                   <label className="flex items-center">
-                    <input type="checkbox" className="mr-3" />
-                    <span className="text-sm text-gray-600">In stock (18)</span>
+                    <input type="checkbox" className="mr-3 accent-gold-primary" />
+                    <span className="text-sm text-platinum/70">In stock (18)</span>
                   </label>
                   <label className="flex items-center">
-                    <input type="checkbox" className="mr-3" />
-                    <span className="text-sm text-gray-600">Out of stock (1)</span>
+                    <input type="checkbox" className="mr-3 accent-gold-primary" />
+                    <span className="text-sm text-platinum/70">Out of stock (1)</span>
                   </label>
                 </div>
               )}
@@ -182,27 +182,27 @@ const AllProducts = () => {
                 onClick={() => setIsPriceOpen(!isPriceOpen)}
                 className="flex items-center justify-between w-full text-left"
               >
-                <h4 className="text-sm font-medium text-gray-900">PRICE</h4>
-                <ChevronDown className={`h-4 w-4 transform transition-transform ${isPriceOpen ? 'rotate-180' : ''}`} />
+                <h4 className="text-sm font-medium text-platinum luxury-serif">PRICE</h4>
+                <ChevronDown className={`h-4 w-4 text-gold-primary transform transition-transform ${isPriceOpen ? 'rotate-180' : ''}`} />
               </button>
               
               {isPriceOpen && (
                 <div className="mt-4">
                   <div className="flex items-center space-x-4 mb-4">
                     <div className="flex items-center">
-                      <span className="text-sm text-gray-600 mr-2">₹</span>
+                      <span className="text-sm text-platinum/70 mr-2">₹</span>
                       <input
                         type="number"
                         placeholder="0"
-                        className="w-20 px-2 py-1 border border-gray-300 rounded text-sm"
+                        className="w-20 px-2 py-1 bg-luxury-secondary border border-gold-primary/30 text-platinum rounded text-sm"
                       />
                     </div>
                     <div className="flex items-center">
-                      <span className="text-sm text-gray-600 mr-2">₹</span>
+                      <span className="text-sm text-platinum/70 mr-2">₹</span>
                       <input
                         type="number"
                         placeholder="999.00"
-                        className="w-24 px-2 py-1 border border-gray-300 rounded text-sm"
+                        className="w-24 px-2 py-1 bg-luxury-secondary border border-gold-primary/30 text-platinum rounded text-sm"
                       />
                     </div>
                   </div>
@@ -211,7 +211,7 @@ const AllProducts = () => {
                       type="range"
                       min="0"
                       max="2000"
-                      className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                      className="w-full h-2 bg-gold-primary/30 rounded-lg appearance-none cursor-pointer"
                     />
                   </div>
                 </div>
@@ -219,7 +219,7 @@ const AllProducts = () => {
             </div>
           </div>
 
-          {/* Products Grid */}
+          {/* Products Grid with luxury styling */}
           <div className="w-3/4">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {products.map((product) => {
@@ -227,23 +227,23 @@ const AllProducts = () => {
                 
                 return (
                   <div key={product.id} className="group cursor-pointer">
-                    <div className="relative overflow-hidden rounded-lg bg-gray-100 aspect-square mb-4">
+                    <div className="relative overflow-hidden rounded-lg glass-card-sapphire bg-luxury-secondary aspect-square mb-4 border border-sapphire-luxury/30 shadow-glow-sapphire">
                       {product.sale && (
-                        <div className="absolute top-4 left-4 bg-brand text-dark-chocolate px-3 py-1 text-sm font-medium rounded z-10">
+                        <div className="absolute top-4 left-4 bg-gradient-to-r from-gold-primary to-rose-gold text-luxury-dark px-3 py-1 text-sm font-medium rounded z-10 shadow-glow-ruby">
                           Sale
                         </div>
                       )}
                       {product.soldOut && (
-                        <div className="absolute top-4 right-12 bg-red-500 text-dark-chocolate px-3 py-1 text-sm font-medium rounded z-10">
+                        <div className="absolute top-4 right-12 bg-ruby-luxury text-platinum px-3 py-1 text-sm font-medium rounded z-10 shadow-glow-ruby">
                           Sold Out
                         </div>
                       )}
                       <button 
                         onClick={() => toggleWishlist(product)}
-                        className="absolute top-4 right-4 p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow z-10"
+                        className="absolute top-4 right-4 p-2 bg-luxury-dark/50 rounded-full shadow-md hover:shadow-lg hover-ruby-glow transition-all z-10"
                       >
                         <Heart className={`h-4 w-4 transition-colors ${
-                          isInWishlist ? 'text-red-500 fill-current' : 'text-gray-600 hover:text-red-500'
+                          isInWishlist ? 'text-ruby-luxury fill-current' : 'text-platinum hover:text-ruby-luxury'
                         }`} />
                       </button>
                       <img
@@ -254,7 +254,7 @@ const AllProducts = () => {
                       {!product.soldOut && (
                         <button
                           onClick={() => addToCart(product)}
-                          className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-brand text-dark-chocolate px-4 py-2 rounded-lg font-medium hover:bg-brand-hover transition-colors opacity-0 group-hover:opacity-100 flex items-center space-x-2"
+                          className="absolute bottom-4 left-1/2 transform -translate-x-1/2 btn-premium-gold text-luxury-dark px-4 py-2 rounded-lg font-medium hover:shadow-glow opacity-0 group-hover:opacity-100 flex items-center space-x-2 transition-all duration-300"
                         >
                           <ShoppingBag className="h-4 w-4" />
                           <span>Add to Cart</span>
@@ -262,15 +262,15 @@ const AllProducts = () => {
                       )}
                     </div>
                     <div className="text-center">
-                      <h3 className="text-sm font-medium text-gray-900 mb-2">
+                      <h3 className="text-sm font-medium text-platinum mb-2 luxury-serif">
                         {product.name}
                       </h3>
                       <div className="flex items-center justify-center space-x-2">
-                        <span className="text-lg font-bold text-gray-900">
+                        <span className="text-lg font-bold text-gold-primary">
                           Rs. {product.price.toLocaleString()}.00
                         </span>
                         {product.originalPrice && (
-                          <span className="text-sm text-gray-500 line-through">
+                          <span className="text-sm text-platinum/50 line-through">
                             Rs. {product.originalPrice.toLocaleString()}.00
                           </span>
                         )}
@@ -281,15 +281,15 @@ const AllProducts = () => {
               })}
             </div>
 
-            {/* Pagination */}
+            {/* Pagination with luxury styling */}
             <div className="flex items-center justify-center space-x-2 mt-12">
-              <button className="px-4 py-2 bg-black text-dark-chocolate rounded hover:bg-gray-800 transition-colors">
+              <button className="px-4 py-2 bg-gold-primary text-luxury-dark rounded hover:shadow-glow transition-all duration-300 font-semibold">
                 1
               </button>
-              <button className="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition-colors">
+              <button className="px-4 py-2 bg-luxury-secondary text-platinum rounded border border-gold-primary/30 hover:bg-luxury-tertiary transition-colors duration-300">
                 2
               </button>
-              <button className="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition-colors">
+              <button className="px-4 py-2 bg-luxury-secondary text-platinum rounded border border-gold-primary/30 hover:bg-luxury-tertiary transition-colors duration-300">
                 →
               </button>
             </div>

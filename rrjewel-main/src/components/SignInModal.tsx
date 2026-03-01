@@ -18,13 +18,15 @@ const SignInModal = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     (async () => {
-      const API = (import.meta.env && (import.meta.env.VITE_API_BASE || '')) || '';
       try {
-        const url = `${API}/api/auth/${isSignUp ? 'register' : 'login'}`;
+        const url = `/api/auth/${isSignUp ? 'register' : 'login'}`;
+        const body = isSignUp
+          ? { email: formData.email, password: formData.password, name: formData.name }
+          : { email: formData.email, password: formData.password };
         const res = await fetch(url, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: formData.email, password: formData.password, name: formData.name }),
+          body: JSON.stringify(body),
         });
         const data = await res.json();
         if (!res.ok) {
@@ -51,15 +53,15 @@ const SignInModal = () => {
   if (!state.isSignInOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+    <div className="fixed inset-0 bg-luxury-dark/70 backdrop-blur-sm flex items-center justify-center z-50">
+      <div className="glass-card-emerald border border-emerald-luxury/40 rounded-lg p-8 max-w-md w-full mx-4 shadow-glow-emerald">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold text-gray-900">
+          <h2 className="text-2xl font-bold text-gold-primary luxury-serif">
             {isSignUp ? 'Create Account' : 'Sign In'}
           </h2>
           <button
             onClick={handleClose}
-            className="text-gray-400 hover:text-gray-600 transition-colors"
+            className="text-platinum/60 hover:text-gold-primary transition-all duration-300"
           >
             <X className="h-6 w-6" />
           </button>
@@ -68,17 +70,17 @@ const SignInModal = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           {isSignUp && (
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-platinum mb-2 luxury-serif">
                 Full Name
               </label>
               <div className="relative">
-                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gold-primary/60" />
                 <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none"
+                  className="w-full pl-10 pr-4 py-3 bg-luxury-secondary border border-emerald-luxury/30 rounded-lg text-platinum placeholder-platinum/40 focus:ring-2 focus:ring-emerald-luxury/60 focus:border-transparent outline-none transition-all duration-300"
                   placeholder="Enter your full name"
                   required={isSignUp}
                 />
@@ -87,17 +89,17 @@ const SignInModal = () => {
           )}
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-platinum mb-2 luxury-serif">
               Email Address
             </label>
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gold-primary/60" />
               <input
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none"
+                className="w-full pl-10 pr-4 py-3 bg-luxury-secondary border border-emerald-luxury/30 rounded-lg text-platinum placeholder-platinum/40 focus:ring-2 focus:ring-emerald-luxury/60 focus:border-transparent outline-none transition-all duration-300"
                 placeholder="Enter your email"
                 required
               />
@@ -105,17 +107,17 @@ const SignInModal = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-platinum mb-2 luxury-serif">
               Password
             </label>
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gold-primary/60" />
               <input
                 type="password"
                 name="password"
                 value={formData.password}
                 onChange={handleInputChange}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none"
+                className="w-full pl-10 pr-4 py-3 bg-luxury-secondary border border-emerald-luxury/30 rounded-lg text-platinum placeholder-platinum/40 focus:ring-2 focus:ring-emerald-luxury/60 focus:border-transparent outline-none transition-all duration-300"
                 placeholder="Enter your password"
                 required
               />
@@ -124,18 +126,18 @@ const SignInModal = () => {
 
           <button
             type="submit"
-            className="w-full bg-brand text-dark-chocolate py-3 px-6 rounded-lg font-medium hover:bg-brand-hover transition-colors"
+            className="w-full btn-premium-gold text-luxury-dark py-3 px-6 rounded-lg font-medium hover:shadow-glow transition-all duration-300"
           >
             {isSignUp ? 'Create Account' : 'Sign In'}
           </button>
         </form>
 
         <div className="mt-6 text-center">
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-platinum/70">
             {isSignUp ? 'Already have an account?' : "Don't have an account?"}
             <button
               onClick={() => setIsSignUp(!isSignUp)}
-              className="ml-2 text-brand hover:text-brand-hover font-medium"
+              className="ml-2 text-gold-primary hover:text-gold-highlight font-medium transition-colors duration-300"
             >
               {isSignUp ? 'Sign In' : 'Sign Up'}
             </button>

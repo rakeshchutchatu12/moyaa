@@ -6,8 +6,8 @@ const nextConfig = {
     serverActions: true,
   },
   env: {
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000',
     MONGO_URI: process.env.MONGO_URI,
-    JWT_SECRET: process.env.JWT_SECRET,
   },
 };
 

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 import User from '@/models/User';
-import jwt from 'jsonwebtoken';
+import bcryptjs from 'bcryptjs';
 
 export async function POST(request: NextRequest) {
   try {
@@ -16,16 +16,23 @@ export async function POST(request: NextRequest) {
     }
 
     const user = await User.findOne({ email });
-    if (!user || user.passwordHash !== password) {
+    if (!user) {
       return NextResponse.json(
         { error: 'Invalid credentials' },
         { status: 401 }
       );
     }
 
-    const secret = process.env.JWT_SECRET || 'dev_secret';
-    const token = jwt.sign({ id: user._id }, secret, { expiresIn: '7d' });
+    // Compare hashed password
+    const isValidPassword = await bcryptjs.compare(password, user.passwordHash);
+    if (!isValidPassword) {
+      return NextResponse.json(
+        { error: 'Invalid credentials' },
+        { status: 401 }
+      );
+    }
 
+    // Direct auth - return user data
     return NextResponse.json({
       user: {
         id: user._id,
@@ -33,7 +40,6 @@ export async function POST(request: NextRequest) {
         name: user.name,
         isAdmin: user.isAdmin,
       },
-      token,
     });
   } catch (error) {
     console.error('Login error:', error);

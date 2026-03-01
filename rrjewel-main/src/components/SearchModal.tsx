@@ -145,13 +145,13 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center z-50 pt-20">
-      <div className="bg-white rounded-lg max-w-2xl w-full mx-4 max-h-[80vh] overflow-hidden">
-        <div className="flex items-center justify-between p-6 border-b">
-          <h2 className="text-2xl font-bold text-gray-900">Search Products</h2>
+    <div className="fixed inset-0 bg-luxury-dark/70 backdrop-blur-sm flex items-start justify-center z-50 pt-20">
+      <div className="glass-card-sapphire border border-sapphire-luxury/40 rounded-lg max-w-2xl w-full mx-4 max-h-[80vh] overflow-hidden shadow-glow-sapphire">
+        <div className="flex items-center justify-between p-6 border-b border-gold-primary/30">
+          <h2 className="text-2xl font-bold text-gold-primary luxury-serif">Search Products</h2>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 transition-colors"
+            className="text-platinum/60 hover:text-gold-primary transition-all duration-300"
           >
             <X className="h-6 w-6" />
           </button>
@@ -159,13 +159,13 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => {
 
         <div className="p-6">
           <div className="relative mb-6">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gold-primary/60" />
             <input
               type="text"
               value={state.searchQuery}
               onChange={(e) => handleSearch(e.target.value)}
               placeholder="Search for jewelry by name or category..."
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none"
+              className="w-full pl-10 pr-4 py-3 bg-luxury-secondary border border-gold-primary/30 rounded-lg text-platinum placeholder-platinum/40 focus:ring-2 focus:ring-gold-primary/60 focus:border-transparent outline-none transition-all duration-300"
               autoFocus
             />
           </div>
@@ -173,16 +173,16 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => {
           <div className="overflow-y-auto max-h-96">
             {state.searchQuery === '' ? (
               <div className="text-center py-8">
-                <Search className="h-16 w-16 text-gray-300 mx-auto mb-4" />
-                <p className="text-gray-500 text-lg">Start typing to search for products</p>
+                <Search className="h-16 w-16 text-platinum/20 mx-auto mb-4" />
+                <p className="text-platinum/70 text-lg">Start typing to search for products</p>
               </div>
             ) : state.searchResults.length === 0 ? (
               <div className="text-center py-8">
-                <p className="text-gray-500 text-lg">No products found for "{state.searchQuery}"</p>
+                <p className="text-platinum/70 text-lg">No products found for "{state.searchQuery}"</p>
                 <Link
                   to="/products"
                   onClick={onClose}
-                  className="mt-4 inline-block bg-brand text-dark-chocolate px-6 py-2 rounded-lg hover:bg-brand-hover transition-colors"
+                  className="mt-4 inline-block btn-premium-gold text-luxury-dark px-6 py-2 rounded-lg hover:shadow-glow transition-all duration-300"
                 >
                   View All Products
                 </Link>
@@ -193,50 +193,50 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => {
                   const isInWishlist = state.wishlist.find(item => item.id === product.id);
                   
                   return (
-                    <div key={product.id} className="border rounded-lg p-4 hover:shadow-md transition-shadow">
+                    <div key={product.id} className="glass-card-sapphire border border-sapphire-luxury/30 rounded-lg p-4 hover:shadow-glow-sapphire transition-all duration-300">
                       <div className="relative mb-4">
                         <img
                           src={product.image}
                           alt={product.name}
-                          className="w-full h-32 object-cover rounded-lg"
+                          className="w-full h-32 object-cover rounded-lg border border-gold-primary/20"
                         />
                         {product.sale && (
-                          <div className="absolute top-2 left-2 bg-brand text-dark-chocolate px-2 py-1 text-xs font-medium rounded">
+                          <div className="absolute top-2 left-2 bg-gradient-to-r from-gold-primary to-rose-gold text-luxury-dark px-2 py-1 text-xs font-medium rounded shadow-glow-gold">
                             Sale
                           </div>
                         )}
                         {product.soldOut && (
-                          <div className="absolute top-2 right-2 bg-red-500 text-dark-chocolate px-2 py-1 text-xs font-medium rounded">
+                          <div className="absolute top-2 right-2 bg-ruby-luxury text-platinum px-2 py-1 text-xs font-medium rounded shadow-glow-ruby">
                             Sold Out
                           </div>
                         )}
                         <button
                           onClick={() => toggleWishlist(product)}
-                          className="absolute top-2 right-2 p-1 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow"
+                          className="absolute top-2 right-2 p-1 bg-luxury-dark/50 rounded-full shadow-md hover:shadow-lg hover-ruby-glow transition-all"
                         >
                           <Heart className={`h-4 w-4 transition-colors ${
-                            isInWishlist ? 'text-red-500 fill-current' : 'text-gray-600 hover:text-red-500'
+                            isInWishlist ? 'text-ruby-luxury fill-current' : 'text-platinum hover:text-ruby-luxury'
                           }`} />
                         </button>
                       </div>
-                      <h3 className="font-medium text-gray-900 mb-2">{product.name}</h3>
+                      <h3 className="font-medium text-platinum mb-2 luxury-serif">{product.name}</h3>
                       <div className="flex items-center justify-between mb-3">
                         <div className="flex items-center space-x-2">
-                          <span className="text-brand font-bold">
+                          <span className="text-gold-primary font-bold">
                             Rs. {product.price.toLocaleString()}.00
                           </span>
                           {product.originalPrice && (
-                            <span className="text-sm text-gray-500 line-through">
+                            <span className="text-sm text-platinum/50 line-through">
                               Rs. {product.originalPrice.toLocaleString()}.00
                             </span>
                           )}
                         </div>
-                        <span className="text-xs text-gray-500 capitalize">{product.category}</span>
+                        <span className="text-xs text-platinum/60 capitalize">{product.category}</span>
                       </div>
                       {!product.soldOut && (
                         <button
                           onClick={() => addToCart(product)}
-                          className="w-full bg-brand text-dark-chocolate py-2 px-4 rounded-lg font-medium hover:bg-brand-hover transition-colors flex items-center justify-center space-x-2"
+                          className="w-full btn-premium-gold text-luxury-dark py-2 px-4 rounded-lg font-medium hover:shadow-glow transition-all duration-300 flex items-center justify-center space-x-2"
                         >
                           <ShoppingBag className="h-4 w-4" />
                           <span>Add to Cart</span>
