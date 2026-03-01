@@ -1,29 +1,21 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "functions": {
-    "api/**/*.ts": {
-      "runtime": "nodejs18.x",
-      "memory": 1024,
-      "maxDuration": 30
-    }
-  },
   "routes": [
     {
-      "src": "^/api/(.*)",
+      "src": "/api/(.*)",
       "dest": "/api/$1.ts"
     },
     {
-      "src": "^/health",
-      "dest": "/api/health.ts"
+      "src": "/(.*)",
+      "dest": "/index.html"
     },
     {
-      "src": "^/(?!api|_next|_static|.*\\..*)(.*)",
+      "src": "/index.html",
       "dest": "/index.html"
     }
   ],
   "env": {
-    "MONGO_URI": "@mongo_uri",
     "NODE_ENV": "production"
   }
 }}
