@@ -1,12 +1,7 @@
 {
   "version": 2,
-  "installCommand": "npm ci",
-  "buildCommand": "npm run build",
-  "env": {
-    "CI": "true"
-  },
+  "buildCommand": "npm install && npm run build",
   "outputDirectory": "dist",
-  "public": false,
   "routes": [
     {
       "src": "/(.*)",
