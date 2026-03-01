@@ -17,7 +17,8 @@
     "mongoose": "^7.5.0",
     "bcryptjs": "^2.4.3",
     "jsonwebtoken": "^9.0.2",
-    "next": "^14.0.0-canary"
+    "next": "^14.0.0-canary",
+    "@vercel/node": "^3.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",

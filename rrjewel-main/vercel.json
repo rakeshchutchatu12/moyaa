@@ -1,22 +1,29 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
+  "functions": {
+    "api/**/*.ts": {
+      "runtime": "nodejs18.x",
+      "memory": 1024,
+      "maxDuration": 30
+    }
+  },
   "routes": [
     {
       "src": "^/api/(.*)",
-      "dest": "/api/$1"
+      "dest": "/api/$1.ts"
     },
     {
-      "src": "^/(?!api)(.*)",
+      "src": "^/health",
+      "dest": "/api/health.ts"
+    },
+    {
+      "src": "^/(?!api|_next|_static|.*\\..*)(.*)",
       "dest": "/index.html"
     }
   ],
   "env": {
-    "VITE_API_BASE": "@vite_api_base",
     "MONGO_URI": "@mongo_uri",
-    "ADMIN_EMAIL": "@admin_email",
-    "ADMIN_PASSWORD": "@admin_password",
     "NODE_ENV": "production"
-  },
-  "envFile": ".env.production"
+  }
 }}
