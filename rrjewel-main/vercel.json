@@ -1,7 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "npm install && npm run build",
-  "installCommand": "npm install --include=dev",
+  "buildCommand": "npm install --include=dev && npx vite build",
   "outputDirectory": "dist",
   "env": {
     "NODE_ENV": "development",
