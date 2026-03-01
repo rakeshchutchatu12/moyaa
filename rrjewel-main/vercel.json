@@ -1,22 +1,11 @@
 {
   "version": 2,
-  "buildCommand": "npm ci && npm run build",
-  "env": {
-    "SKIP_ENV_VALIDATION": "true"
-  },
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    }
-  ],
+  "buildCommand": "npm install && ./node_modules/.bin/vite build",
+  "outputDirectory": "dist",
   "routes": [
     {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
     },
     {
       "src": "/(.*)",
