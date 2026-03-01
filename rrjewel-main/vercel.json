@@ -1,9 +1,21 @@
 {
-  "buildCommand": "npm run build",
+  "version": 2,
+  "buildCommand": "npm install && npm run build",
+  "installCommand": "npm install --include=dev",
   "outputDirectory": "dist",
   "env": {
-    "NODE_ENV": "development"
+    "NODE_ENV": "development",
+    "CI": "true"
   },
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",
@@ -24,10 +36,14 @@
       ]
     }
   ],
-  "rewrites": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
