@@ -1,5 +1,3 @@
-import { VercelRequest, VercelResponse } from '@vercel/node';
-
-export default async (req: VercelRequest, res: VercelResponse) => {
+export default async (_req: any, res: any) => {
   res.json({ status: 'ok', message: 'RRJEWEL API Server is running' });
 };

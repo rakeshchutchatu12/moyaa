@@ -222,7 +222,7 @@ const Header = () => {
               >
                 <ShoppingBag className="h-4 w-4" />
                 {state.cart.length > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-gold-primary text-luxury-dark text-xs rounded-full h-4 w-4 flex items-center justify-center text-xs font-semibold shadow-glow">
+                  <span className="absolute -top-2 -right-2 bg-gold-primary text-luxury-dark text-xs rounded-full h-4 w-4 flex items-center justify-center font-semibold shadow-glow">
                     {state.cart.length}
                   </span>
                 )}

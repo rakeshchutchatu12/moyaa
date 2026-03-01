@@ -1,51 +1,27 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { connectDB } from '@/lib/mongodb';
-import User from '@/models/User';
-import bcryptjs from 'bcryptjs';
-
-export async function POST(request: NextRequest) {
+export default async (request: any, response: any) => {
   try {
-    await connectDB();
-    const { email, password } = await request.json();
+    const { email, password } = request.body;
 
     if (!email || !password) {
-      return NextResponse.json(
-        { error: 'Email and password required' },
-        { status: 400 }
-      );
+      return response.status(400).json({ error: 'Email and password required' });
     }
 
-    const user = await User.findOne({ email });
-    if (!user) {
-      return NextResponse.json(
-        { error: 'Invalid credentials' },
-        { status: 401 }
-      );
+    // Mock authentication - in production, connect to MongoDB
+    if (email === 'admin@moraa.com' && password === 'changeme') {
+      return response.json({
+        user: {
+          id: 'admin123',
+          email: 'admin@moraa.com',
+          name: 'Admin',
+          isAdmin: true
+        }
+      });
     }
 
-    // Compare hashed password
-    const isValidPassword = await bcryptjs.compare(password, user.passwordHash);
-    if (!isValidPassword) {
-      return NextResponse.json(
-        { error: 'Invalid credentials' },
-        { status: 401 }
-      );
-    }
-
-    // Direct auth - return user data
-    return NextResponse.json({
-      user: {
-        id: user._id,
-        email: user.email,
-        name: user.name,
-        isAdmin: user.isAdmin,
-      },
-    });
+    return response.status(400).json({ error: 'Invalid credentials' });
   } catch (error) {
     console.error('Login error:', error);
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
+    return response.status(500).json({ error: 'Internal server error' });
   }
-}
+};
+
