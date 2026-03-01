@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "buildCommand": "npm install && ./node_modules/.bin/vite build",
+  "installCommand": "npm ci",
+  "buildCommand": "npm run build",
+  "env": {
+    "CI": "true"
+  },
   "outputDirectory": "dist",
+  "public": false,
   "routes": [
-    {
-      "src": "/assets/(.*)",
-      "dest": "/assets/$1"
-    },
     {
       "src": "/(.*)",
       "dest": "/index.html"
