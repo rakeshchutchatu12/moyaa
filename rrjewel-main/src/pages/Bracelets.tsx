@@ -76,14 +76,14 @@ const Bracelets = () => {
   };
 
   return (
-    <div className="min-h-screen bg-luxury-dark">
+    <div className="min-h-screen bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Hero Section */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gold-primary to-rose-gold mb-4">
             BRACELETS
           </h1>
-          <p className="text-platinum/70">
+          <p className="text-gray-600">
             Explore our exquisite collection of bracelets and kadas, perfect for any occasion.
           </p>
         </div>
@@ -96,7 +96,7 @@ const Bracelets = () => {
             return (
               <div key={product.id} className="group cursor-pointer">
                 {/* Product Image */}
-                <div className="relative overflow-hidden rounded-lg bg-luxury-secondary border border-emerald-luxury/20 aspect-square mb-4">
+                <div className="relative overflow-hidden rounded-lg bg-gray-50 border border-gold-primary/20 aspect-square mb-4">
                   {/* Sale Badge */}
                   {product.sale && (
                     <div className="absolute top-4 left-4 bg-gradient-to-r from-gold-primary to-rose-gold text-luxury-dark px-3 py-1 text-sm font-medium rounded z-10 shadow-glow-gold">
@@ -106,10 +106,10 @@ const Bracelets = () => {
                   {/* Wishlist Button */}
                   <button 
                     onClick={() => toggleWishlist(product)}
-                    className="absolute top-4 right-4 p-2 glass-card-ruby border border-ruby-luxury/40 rounded-full shadow-glow-ruby hover:shadow-glow-gold transition-shadow z-10"
+                    className="absolute top-4 right-4 p-2 bg-white/80 border border-gold-primary/30 rounded-full hover:shadow-lg transition-shadow z-10"
                   >
                     <Heart className={`h-4 w-4 transition-colors ${
-                      isInWishlist ? 'text-gold-primary fill-current' : 'text-platinum hover:text-rose-gold'
+                      isInWishlist ? 'text-primary-wine fill-current' : 'text-gray-400 hover:text-primary-wine'
                     }`} />
                   </button>
                   {/* Product Image */}
@@ -129,7 +129,7 @@ const Bracelets = () => {
                 </div>
                 {/* Product Info */}
                 <div className="text-center">
-                  <h3 className="text-sm font-medium text-platinum mb-2 hover:text-gold-primary transition-colors">
+                  <h3 className="text-sm font-medium text-gray-900 mb-2 hover:text-gold-primary transition-colors">
                     {product.name}
                   </h3>
                   <div className="flex items-center justify-center space-x-2">
@@ -137,7 +137,7 @@ const Bracelets = () => {
                       Rs. {product.price.toLocaleString()}.00
                     </span>
                     {product.originalPrice && (
-                      <span className="text-sm text-platinum/50 line-through">
+                      <span className="text-sm text-gray-500 line-through">
                         Rs. {product.originalPrice.toLocaleString()}.00
                       </span>
                     )}

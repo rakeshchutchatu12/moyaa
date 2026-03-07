@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, Mail, Lock, User } from 'lucide-react';
 import { useAppContext } from '../context/AppContext';
+import { API_BASE_URL } from '../utils/api';
 
 const SignInModal = () => {
   const { state, dispatch } = useAppContext();
@@ -19,7 +20,7 @@ const SignInModal = () => {
     e.preventDefault();
     (async () => {
       try {
-        const url = `/api/auth/${isSignUp ? 'register' : 'login'}`;
+        const url = `${API_BASE_URL}/api/auth/${isSignUp ? 'register' : 'login'}`;
         const body = isSignUp
           ? { email: formData.email, password: formData.password, name: formData.name }
           : { email: formData.email, password: formData.password };

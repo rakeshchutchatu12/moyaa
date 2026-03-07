@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAppContext } from '../context/AppContext';
+import { API_ENDPOINTS } from '../utils/api';
 
 const ShowcaseVideos: React.FC = () => {
   const scrollerRef = useRef<HTMLDivElement | null>(null);
@@ -30,12 +31,12 @@ const ShowcaseVideos: React.FC = () => {
         const fd = new FormData();
         fd.append('file', file);
         fd.append('title', title || file.name || 'Video');
-        const res = await fetch(`/api/videos`, { method: 'POST', body: fd });
+        const res = await fetch(API_ENDPOINTS.VIDEOS, { method: 'POST', body: fd });
         if (!res.ok) throw new Error('Add failed');
         const v = await res.json();
         dispatch({ type: 'SET_VIDEOS', payload: [v, ...(state.videos || [])] });
       } else if (url) {
-        const res = await fetch(`/api/videos`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ title: title || 'Video', url }) });
+        const res = await fetch(API_ENDPOINTS.VIDEOS, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ title: title || 'Video', url }) });
         if (!res.ok) throw new Error('Add failed');
         const v = await res.json();
         dispatch({ type: 'SET_VIDEOS', payload: [v, ...(state.videos || [])] });

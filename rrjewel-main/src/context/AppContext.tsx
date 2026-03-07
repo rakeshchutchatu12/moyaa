@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useReducer, ReactNode, useEffect } from 'react';
 import { products as seedProducts, Product as SeedProduct } from '../data/products';
+import { API_BASE_URL, API_ENDPOINTS } from '../utils/api';
 
 export interface Product {
   id: number;
@@ -240,13 +241,13 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     const hydrate = async () => {
       // try backend first
       try {
-        const health = await fetch(`/api/health`);
+        const health = await fetch(API_ENDPOINTS.HEALTH);
         if (health.ok) {
           const [prodRes, vidRes, banRes, coupRes] = await Promise.all([
-            fetch(`/api/products`),
-            fetch(`/api/videos`),
-            fetch(`/api/banners`),
-            fetch(`/api/coupons`),
+            fetch(API_ENDPOINTS.PRODUCTS),
+            fetch(API_ENDPOINTS.VIDEOS),
+            fetch(API_ENDPOINTS.BANNERS),
+            fetch(API_ENDPOINTS.COUPONS),
           ]);
           if (prodRes.ok) {
             const prods = await prodRes.json();

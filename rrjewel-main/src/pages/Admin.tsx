@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Plus, Edit, Trash2, Eye, Package, Users, ShoppingBag, TrendingUp } from 'lucide-react';
 import { useAppContext } from '../context/AppContext';
+import { API_BASE_URL, API_ENDPOINTS } from '../utils/api';
 
 const Admin = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -31,7 +32,7 @@ const Admin = () => {
         const form = e.target as HTMLFormElement;
         const fd = new FormData(form);
         try {
-          const res = await fetch(`/api/products`, { method: 'POST', body: fd });
+          const res = await fetch(API_ENDPOINTS.PRODUCTS, { method: 'POST', body: fd });
           if (!res.ok) throw new Error('Create failed');
           const created = await res.json();
           dispatch({ type: 'ADD_PRODUCT', payload: created });
@@ -131,7 +132,7 @@ const Admin = () => {
       if (!url) return;
       (async () => {
         try {
-          const res = await fetch(`${API}/api/videos`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ title: title || 'Video', url }) });
+          const res = await fetch(API_ENDPOINTS.VIDEOS, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ title: title || 'Video', url }) });
           if (!res.ok) throw new Error('Video add failed');
           const v = await res.json();
           dispatch({ type: 'SET_VIDEOS', payload: [v, ...state.videos] });
@@ -178,7 +179,7 @@ const Admin = () => {
                 <button 
                   onClick={async () => {
                     try {
-                      const res = await fetch(`${API}/api/videos/${v._id || v.id}`, { method: 'DELETE' });
+                      const res = await fetch(`${API_ENDPOINTS.VIDEOS}/${v._id || v.id}`, { method: 'DELETE' });
                       if (!res.ok) throw new Error('Delete failed');
                       dispatch({ type: 'SET_VIDEOS', payload: state.videos.filter(x => x.id !== v.id && x._id !== v._id) });
                     } catch (e) {
@@ -213,7 +214,7 @@ const Admin = () => {
         Object.keys(form).forEach(k => {
           if (form[k] !== undefined && form[k] !== null) fd.append(k, form[k]);
         });
-        const res = await fetch(`/api/products/${form.id}`, { method: 'PUT', body: fd });
+        const res = await fetch(`${API_ENDPOINTS.PRODUCTS}/${form.id}`, { method: 'PUT', body: fd });
         if (!res.ok) throw new Error('Update failed');
         const updated = await res.json();
         dispatch({ type: 'UPDATE_PRODUCT', payload: updated });
@@ -317,7 +318,7 @@ const Admin = () => {
       const id = Date.now().toString();
       (async () => {
         try {
-          const res = await fetch(`/api/banners`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text, type }) });
+          const res = await fetch(API_ENDPOINTS.BANNERS, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text, type }) });
           if (!res.ok) throw new Error('Add banner failed');
           const b = await res.json();
           dispatch({ type: 'SET_BANNERS', payload: [b, ...state.banners] });
@@ -392,7 +393,7 @@ const Admin = () => {
                 <button 
                   onClick={async () => {
                     try {
-                      const res = await fetch(`/api/banners/${b._id || b.id}`, { method: 'DELETE' });
+                      const res = await fetch(`${API_ENDPOINTS.BANNERS}/${b._id || b.id}`, { method: 'DELETE' });
                       if (!res.ok) throw new Error('Delete failed');
                       dispatch({ type: 'SET_BANNERS', payload: state.banners.filter(x => x.id !== b.id && x._id !== b._id) });
                     } catch (e) {
@@ -421,7 +422,7 @@ const Admin = () => {
       (async () => {
         const payload = { code, discountPercent: discount, active: true, productId: productId === '' ? null : Number(productId), expiresAt, usageLimit: usageLimit === '' ? null : Number(usageLimit), used: 0 };
         try {
-          const res = await fetch(`/api/coupons`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+          const res = await fetch(API_ENDPOINTS.COUPONS, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
           if (!res.ok) throw new Error('Create coupon failed');
           const c = await res.json();
           dispatch({ type: 'ADD_COUPON', payload: c });
@@ -453,7 +454,7 @@ const Admin = () => {
               <div className="flex space-x-2">
                 <button onClick={async () => {
                   try {
-                    const res = await fetch(`/api/coupons/${c.code}`, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...c, active: !c.active }) });
+                    const res = await fetch(`${API_ENDPOINTS.COUPONS}/${c.code}`, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...c, active: !c.active }) });
                     if (!res.ok) throw new Error('Toggle failed');
                     const updated = await res.json();
                     dispatch({ type: 'UPDATE_COUPON', payload: updated });
@@ -463,7 +464,7 @@ const Admin = () => {
                 }} className="text-blue-600">Toggle</button>
                 <button onClick={async () => {
                   try {
-                    const res = await fetch(`/api/coupons/${c.code}`, { method: 'DELETE' });
+                    const res = await fetch(`${API_ENDPOINTS.COUPONS}/${c.code}`, { method: 'DELETE' });
                     if (!res.ok) throw new Error('Delete failed');
                     dispatch({ type: 'REMOVE_COUPON', payload: c.code });
                   } catch (e) {
@@ -681,7 +682,7 @@ const Admin = () => {
                             <button
                               onClick={async () => {
                                 try {
-                                  const res = await fetch(`/api/products/${product._id || product.id}`, { method: 'DELETE' });
+                                  const res = await fetch(`${API_ENDPOINTS.PRODUCTS}/${product._id || product.id}`, { method: 'DELETE' });
                                   if (!res.ok) throw new Error('Delete failed');
                                   dispatch({ type: 'REMOVE_PRODUCT', payload: product.id });
                                 } catch (e) {

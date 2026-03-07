@@ -5,27 +5,28 @@ export default {
     extend: {
       colors: {
         // Premium Luxury Dark Backgrounds
-        'luxury-dark': '#0A0E27',        // Deep Navy-Black
-        'luxury-secondary': '#111B3D',   // Rich Deep Blue
-        'luxury-tertiary': '#0F1428',    // Midnight Blue
+        'luxury-dark': '#261216',        // Dark chocolate / black wine
+        'luxury-secondary': '#0b1a2b',   // Deep navy blue
+        'luxury-tertiary': '#143c45',    // Premium teal highlight
         
-        // Jewel Tone Accents (Eye-catching Premium)
-        'emerald-luxury': '#0F7938',     // Deep Emerald
-        'sapphire-luxury': '#0F3A7D',    // Rich Sapphire
-        'ruby-luxury': '#8B1538',        // Deep Ruby Red
-        'amethyst-luxury': '#3D1552',    // Royal Amethyst
+        // Luxury Wine & Rose Accents
+        'primary-wine': '#741522',       // Deep wine red (Primary Accent)
+        'secondary-rose': '#843a46',     // Muted rose maroon
+        'ruby-luxury': '#741522',        // Deep wine red
+        'teal-luxury': '#143c45',        // Premium teal blue-green
         
         // Premium Gold & Platinum
-        'gold-primary': '#FFD700',       // Brilliant Gold
-        'gold-soft': '#F5D547',          // Warm Gold
-        'gold-highlight': '#FFED4E',     // Bright Gold Highlight
-        'platinum': '#E8E8E8',           // Platinum White
-        'rose-gold': '#B76E79',          // Rose Gold Accent
+        'gold-primary': '#a88a1f',       // Luxury gold accent
+        'gold-soft': '#a88a1f',          // Luxury gold
+        'gold-highlight': '#e8c547',     // Brighter luxury gold
+        'platinum': '#ffffff',           // Pure white
+        'rose-gold': '#843a46',          // Muted rose maroon
         
         // Premium Text Colors
-        'text-primary': '#FFFFFF',       // Pure White on dark
-        'text-muted': '#C0C0C0',         // Silver-Muted
-        'text-accent': '#FFD700',        // Gold Text
+        'text-primary': '#ffffff',       // Pure white
+        'text-secondary': '#cbd5e1',     // Light slate
+        'text-muted': '#94a3b8',         // Muted slate
+        'text-accent': '#a88a1f',        // Gold text
         
         // Glass & Overlay
         'glass-light': 'rgba(255, 255, 255, 0.05)',
@@ -36,13 +37,13 @@ export default {
         'sans': ['Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'sans-serif'],
       },
       boxShadow: {
-        'glow': '0 0 30px rgba(255, 215, 0, 0.4)',
-        'glow-lg': '0 0 60px rgba(255, 215, 0, 0.3)',
-        'glow-ruby': '0 0 40px rgba(139, 21, 56, 0.3)',
-        'glow-emerald': '0 0 40px rgba(15, 121, 56, 0.3)',
-        'glow-sapphire': '0 0 40px rgba(15, 58, 125, 0.3)',
-        'inner-glow': 'inset 0 0 20px rgba(255, 215, 0, 0.15)',
-        'premium': '0 20px 50px rgba(0, 0, 0, 0.6), 0 0 40px rgba(255, 215, 0, 0.2)',
+        'glow': '0 0 30px rgba(168, 138, 31, 0.3)',
+        'glow-lg': '0 0 60px rgba(168, 138, 31, 0.2)',
+        'glow-ruby': '0 0 40px rgba(116, 21, 34, 0.25)',
+        'glow-emerald': '0 0 40px rgba(20, 60, 69, 0.25)',
+        'glow-sapphire': '0 0 40px rgba(20, 60, 69, 0.25)',
+        'inner-glow': 'inset 0 0 20px rgba(168, 138, 31, 0.1)',
+        'premium': '0 20px 50px rgba(0, 0, 0, 0.8), 0 0 40px rgba(168, 138, 31, 0.15)',
       },
       backdropFilter: {
         'glass': 'backdrop-filter blur(20px)',

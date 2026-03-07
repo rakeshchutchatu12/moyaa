@@ -112,7 +112,7 @@ const AllProducts = () => {
   };
 
   return (
-    <div className="min-h-screen bg-luxury-dark">
+    <div className="min-h-screen bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="flex gap-8">
           {/* Sidebar Filters with luxury styling */}
@@ -127,7 +127,7 @@ const AllProducts = () => {
                 onClick={() => setIsCollectionOpen(!isCollectionOpen)}
                 className="flex items-center justify-between w-full text-left"
               >
-                <h4 className="text-sm font-medium text-platinum luxury-serif">COLLECTION</h4>
+                <h4 className="text-sm font-medium text-gray-900 luxury-serif">COLLECTION</h4>
                 <ChevronDown className={`h-4 w-4 text-gold-primary transform transition-transform ${isCollectionOpen ? 'rotate-180' : ''}`} />
               </button>
               
@@ -141,11 +141,11 @@ const AllProducts = () => {
                           name="collection"
                           className="sr-only"
                         />
-                        <span className="text-sm text-platinum/70 hover:text-gold-primary cursor-pointer transition-colors duration-300">
+                        <span className="text-sm text-gray-700 hover:text-gold-primary cursor-pointer transition-colors duration-300">
                           {collection.name}
                         </span>
                       </label>
-                      <span className="text-sm text-platinum/50">({collection.count})</span>
+                      <span className="text-sm text-gray-500">({collection.count})</span>
                     </div>
                   ))}
                 </div>
@@ -158,7 +158,7 @@ const AllProducts = () => {
                 onClick={() => setIsAvailabilityOpen(!isAvailabilityOpen)}
                 className="flex items-center justify-between w-full text-left"
               >
-                <h4 className="text-sm font-medium text-platinum luxury-serif">AVAILABILITY</h4>
+                <h4 className="text-sm font-medium text-gray-900 luxury-serif">AVAILABILITY</h4>
                 <ChevronDown className={`h-4 w-4 text-gold-primary transform transition-transform ${isAvailabilityOpen ? 'rotate-180' : ''}`} />
               </button>
               
@@ -166,11 +166,11 @@ const AllProducts = () => {
                 <div className="mt-4 space-y-3">
                   <label className="flex items-center">
                     <input type="checkbox" className="mr-3 accent-gold-primary" />
-                    <span className="text-sm text-platinum/70">In stock (18)</span>
+                    <span className="text-sm text-gray-700">In stock (18)</span>
                   </label>
                   <label className="flex items-center">
                     <input type="checkbox" className="mr-3 accent-gold-primary" />
-                    <span className="text-sm text-platinum/70">Out of stock (1)</span>
+                    <span className="text-sm text-gray-700">Out of stock (1)</span>
                   </label>
                 </div>
               )}
@@ -182,7 +182,7 @@ const AllProducts = () => {
                 onClick={() => setIsPriceOpen(!isPriceOpen)}
                 className="flex items-center justify-between w-full text-left"
               >
-                <h4 className="text-sm font-medium text-platinum luxury-serif">PRICE</h4>
+                <h4 className="text-sm font-medium text-gray-900 luxury-serif">PRICE</h4>
                 <ChevronDown className={`h-4 w-4 text-gold-primary transform transition-transform ${isPriceOpen ? 'rotate-180' : ''}`} />
               </button>
               
@@ -190,19 +190,19 @@ const AllProducts = () => {
                 <div className="mt-4">
                   <div className="flex items-center space-x-4 mb-4">
                     <div className="flex items-center">
-                      <span className="text-sm text-platinum/70 mr-2">₹</span>
+                      <span className="text-sm text-gray-700 mr-2">₹</span>
                       <input
                         type="number"
                         placeholder="0"
-                        className="w-20 px-2 py-1 bg-luxury-secondary border border-gold-primary/30 text-platinum rounded text-sm"
+                        className="w-20 px-2 py-1 bg-white border border-gold-primary/30 text-gray-900 rounded text-sm"
                       />
                     </div>
                     <div className="flex items-center">
-                      <span className="text-sm text-platinum/70 mr-2">₹</span>
+                      <span className="text-sm text-gray-700 mr-2">₹</span>
                       <input
                         type="number"
                         placeholder="999.00"
-                        className="w-24 px-2 py-1 bg-luxury-secondary border border-gold-primary/30 text-platinum rounded text-sm"
+                        className="w-24 px-2 py-1 bg-white border border-gold-primary/30 text-gray-900 rounded text-sm"
                       />
                     </div>
                   </div>
@@ -227,23 +227,23 @@ const AllProducts = () => {
                 
                 return (
                   <div key={product.id} className="group cursor-pointer">
-                    <div className="relative overflow-hidden rounded-lg glass-card-sapphire bg-luxury-secondary aspect-square mb-4 border border-sapphire-luxury/30 shadow-glow-sapphire">
+                    <div className="relative overflow-hidden rounded-lg bg-gray-50 aspect-square mb-4 border border-gold-primary/20 shadow-md hover:shadow-lg transition-all">
                       {product.sale && (
-                        <div className="absolute top-4 left-4 bg-gradient-to-r from-gold-primary to-rose-gold text-luxury-dark px-3 py-1 text-sm font-medium rounded z-10 shadow-glow-ruby">
+                        <div className="absolute top-4 left-4 bg-gradient-to-r from-gold-primary to-gold-soft text-luxury-dark px-3 py-1 text-sm font-medium rounded z-10 shadow-md">
                           Sale
                         </div>
                       )}
                       {product.soldOut && (
-                        <div className="absolute top-4 right-12 bg-ruby-luxury text-platinum px-3 py-1 text-sm font-medium rounded z-10 shadow-glow-ruby">
+                        <div className="absolute top-4 right-12 bg-primary-wine text-white px-3 py-1 text-sm font-medium rounded z-10 shadow-md">
                           Sold Out
                         </div>
                       )}
                       <button 
                         onClick={() => toggleWishlist(product)}
-                        className="absolute top-4 right-4 p-2 bg-luxury-dark/50 rounded-full shadow-md hover:shadow-lg hover-ruby-glow transition-all z-10"
+                        className="absolute top-4 right-4 p-2 bg-white/80 rounded-full shadow-md hover:shadow-lg transition-all z-10 border border-gold-primary/30"
                       >
                         <Heart className={`h-4 w-4 transition-colors ${
-                          isInWishlist ? 'text-ruby-luxury fill-current' : 'text-platinum hover:text-ruby-luxury'
+                          isInWishlist ? 'text-primary-wine fill-current' : 'text-gray-800 hover:text-primary-wine'
                         }`} />
                       </button>
                       <img
@@ -262,7 +262,7 @@ const AllProducts = () => {
                       )}
                     </div>
                     <div className="text-center">
-                      <h3 className="text-sm font-medium text-platinum mb-2 luxury-serif">
+                      <h3 className="text-sm font-medium text-gray-900 mb-2 luxury-serif">
                         {product.name}
                       </h3>
                       <div className="flex items-center justify-center space-x-2">
@@ -270,7 +270,7 @@ const AllProducts = () => {
                           Rs. {product.price.toLocaleString()}.00
                         </span>
                         {product.originalPrice && (
-                          <span className="text-sm text-platinum/50 line-through">
+                          <span className="text-sm text-gray-500 line-through">
                             Rs. {product.originalPrice.toLocaleString()}.00
                           </span>
                         )}
@@ -286,10 +286,10 @@ const AllProducts = () => {
               <button className="px-4 py-2 bg-gold-primary text-luxury-dark rounded hover:shadow-glow transition-all duration-300 font-semibold">
                 1
               </button>
-              <button className="px-4 py-2 bg-luxury-secondary text-platinum rounded border border-gold-primary/30 hover:bg-luxury-tertiary transition-colors duration-300">
+              <button className="px-4 py-2 bg-white text-gray-900 rounded border border-gold-primary/30 hover:bg-gray-50 transition-colors duration-300">
                 2
               </button>
-              <button className="px-4 py-2 bg-luxury-secondary text-platinum rounded border border-gold-primary/30 hover:bg-luxury-tertiary transition-colors duration-300">
+              <button className="px-4 py-2 bg-white text-gray-900 rounded border border-gold-primary/30 hover:bg-gray-50 transition-colors duration-300">
                 →
               </button>
             </div>
