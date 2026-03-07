@@ -92,21 +92,21 @@ const Footer = () => {
               <Mail className="h-5 w-5 text-gold-primary flex-shrink-0 mt-1" />
               <div>
                 <p className="text-platinum/50 text-xs tracking-widest luxury-serif mb-2">EMAIL</p>
-                <p className="text-platinum text-sm">hello@myrajewelry.com</p>
+                <p className="text-platinum text-sm">Moraajewels@gmail.com</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
               <Phone className="h-5 w-5 text-gold-primary flex-shrink-0 mt-1" />
               <div>
                 <p className="text-platinum/50 text-xs tracking-widest luxury-serif mb-2">PHONE</p>
-                <p className="text-platinum text-sm">+1 (555) 123-4567</p>
+                <p className="text-platinum text-sm">+91 7877937350</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
               <MapPin className="h-5 w-5 text-gold-primary flex-shrink-0 mt-1" />
               <div>
                 <p className="text-platinum/50 text-xs tracking-widest luxury-serif mb-2">LOCATION</p>
-                <p className="text-platinum text-sm">New York, NY 10001</p>
+                <p className="text-platinum text-sm">Jaipur, Rajasthan 302002</p>
               </div>
             </div>
           </div>

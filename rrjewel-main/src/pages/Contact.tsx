@@ -58,8 +58,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gold-primary mb-1">Email Us</h3>
-                  <p className="text-platinum/70">radiantreflection.customercare@gmail.com</p>
-                  <p className="text-platinum/70">support@radiantreflection.com</p>
+                  <p className="text-platinum/70">Moraajewels@gmail.com</p>
                 </div>
               </div>
 
@@ -69,8 +68,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-emerald-luxury mb-1">Call Us</h3>
-                  <p className="text-platinum/70">+91 98765 43210</p>
-                  <p className="text-platinum/70">+91 87654 32109</p>
+                  <p className="text-platinum/70">+91 7877937350</p>
+                  <p className="text-platinum/70">+91 8094051710</p>
                 </div>
               </div>
 
@@ -81,8 +80,9 @@ const Contact = () => {
                 <div>
                   <h3 className="text-lg font-semibold text-ruby-luxury mb-1">Visit Our Store</h3>
                   <p className="text-platinum/70">
-                    123 Jewelry District<br />
-                    Mumbai, Maharashtra 400001<br />
+                    455, Four Gate Outside Mandhi Khatikan<br />
+                    Pahadiya Chowk, Near Chota Shiv Temple<br />
+                    Jaipur, Rajasthan 302002<br />
                     India
                   </p>
                 </div>
@@ -95,8 +95,8 @@ const Contact = () => {
                 <div>
                   <h3 className="text-lg font-semibold text-sapphire-luxury mb-1">Business Hours</h3>
                   <p className="text-platinum/70">
-                    Monday - Saturday: 10:00 AM - 8:00 PM<br />
-                    Sunday: 11:00 AM - 6:00 PM
+                    Monday - Saturday: 10:00 AM - 9:00 PM<br />
+                    Sunday: 12:00 PM - 8:00 PM
                   </p>
                 </div>
               </div>
